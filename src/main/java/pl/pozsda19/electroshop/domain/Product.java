@@ -9,21 +9,19 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue(generator = "productSeq")
-    @SequenceGenerator(name = "productSeq", sequenceName = "product_Seq", allocationSize = 1)
-    private Long id;
+    private Long productId;
 
-    private String productName;
+    private String name;
 
-    private String productCode;
+    private String code;
 
     @Enumerated(EnumType.STRING)
     private Category category;
 
     @Enumerated(EnumType.STRING)
-    private SubCategory subCategory;
+    private SubCategory subcategory;
 
-    private String picture;
+    private String imageURL;
 
     private String description;
 
@@ -34,28 +32,28 @@ public class Product {
     public Product() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductId(Long id) {
+        this.productId = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String productName) {
+        this.name = productName;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setCode(String productCode) {
+        this.code = productCode;
     }
 
     public Category getCategory() {
@@ -66,20 +64,20 @@ public class Product {
         this.category = category;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
+    public SubCategory getSubcategory() {
+        return subcategory;
     }
 
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
+    public void setSubcategory(SubCategory subCategory) {
+        this.subcategory = subCategory;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setPicture(String pictureURL) {
-        this.picture = pictureURL;
+    public void setImageURL(String pictureURL) {
+        this.imageURL = pictureURL;
     }
 
     public String getDescription() {
@@ -111,12 +109,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(id, product.id) &&
-                Objects.equals(productName, product.productName) &&
-                Objects.equals(productCode, product.productCode) &&
+        return Objects.equals(productId, product.productId) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(code, product.code) &&
                 category == product.category &&
-                subCategory == product.subCategory &&
-                Objects.equals(picture, product.picture) &&
+                subcategory == product.subcategory &&
+                Objects.equals(imageURL, product.imageURL) &&
                 Objects.equals(description, product.description) &&
                 Objects.equals(price, product.price) &&
                 Objects.equals(quantity, product.quantity);
@@ -124,6 +122,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, productName, productCode, category, subCategory, picture, description, price, quantity);
+        return Objects.hash(productId, name, code, category, subcategory, imageURL, description, price, quantity);
     }
 }
