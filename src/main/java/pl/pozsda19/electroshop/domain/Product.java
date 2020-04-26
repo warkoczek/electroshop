@@ -1,23 +1,29 @@
 package pl.pozsda19.electroshop.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 @Entity
+@AllArgsConstructor
 public class Product {
     @Id
+    @GeneratedValue(generator = "productSeq")
+    @SequenceGenerator(name = "productSeq", sequenceName = "product_Seq", allocationSize = 1)
     private Long id;
 
     private String productName;
 
     private String productCode;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
+    @Enumerated(EnumType.STRING)
     private SubCategory subCategory;
 
-    private String pictureURL;
+    private String picture;
 
     private String description;
 
@@ -68,12 +74,12 @@ public class Product {
         this.subCategory = subCategory;
     }
 
-    public String getPictureURL() {
-        return pictureURL;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
+    public void setPicture(String pictureURL) {
+        this.picture = pictureURL;
     }
 
     public String getDescription() {
@@ -110,7 +116,7 @@ public class Product {
                 Objects.equals(productCode, product.productCode) &&
                 category == product.category &&
                 subCategory == product.subCategory &&
-                Objects.equals(pictureURL, product.pictureURL) &&
+                Objects.equals(picture, product.picture) &&
                 Objects.equals(description, product.description) &&
                 Objects.equals(price, product.price) &&
                 Objects.equals(quantity, product.quantity);
@@ -118,6 +124,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, productName, productCode, category, subCategory, pictureURL, description, price, quantity);
+        return Objects.hash(id, productName, productCode, category, subCategory, picture, description, price, quantity);
     }
 }
