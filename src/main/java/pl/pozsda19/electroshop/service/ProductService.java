@@ -6,6 +6,7 @@ import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -18,6 +19,10 @@ public class ProductService {
 
     public List<Product> showAllProducts(){
         return productRepository.findAll();
+    }
+
+    public Optional<Product> showProductByCode(String code){
+        return productRepository.findByCode(code);
     }
 
     public String addProduct(Product product){

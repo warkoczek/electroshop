@@ -7,6 +7,7 @@ import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.service.ProductService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -21,6 +22,15 @@ public class ProductController {
     @GetMapping(value = "", produces = "application/json")
     public List<Product> showAllProducts(){
         return productService.showAllProducts();
+    }
+
+    @GetMapping(value = "/product/get/{code}", produces = "application/json")
+    public ResponseEntity<Product> showProductByCode(@PathVariable String code){
+        Optional<Product> product = productService.showProductByCode(code);
+        if(product.isPresent()){
+            return ResponseEntity.ok(product.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping(value = "/product/add", consumes = "application/json")

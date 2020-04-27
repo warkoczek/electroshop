@@ -18,7 +18,7 @@ public class Product {
     @Enumerated(value = EnumType.STRING)
     private Category category;
     @Enumerated(value = EnumType.STRING)
-    private SubCategory subCategory;
+    private Subcategory subCategory;
 
 
     private String imageURL;
@@ -56,11 +56,11 @@ public class Product {
         this.category = category;
     }
 
-    public SubCategory getSubCategory() {
+    public Subcategory getSubCategory() {
         return subCategory;
     }
 
-    public void setSubCategory(SubCategory subCategory) {
+    public void setSubCategory(Subcategory subCategory) {
         this.subCategory = subCategory;
     }
 
