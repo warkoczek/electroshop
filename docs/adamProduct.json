@@ -1,12 +1,12 @@
 [
   {
-    "code": "0001",
-    "name": "Dalmierz laserowy BOSCH DLE 70",
-    "category": "TECHNIKAPOMIAROWA",
-    "subcategory": "DALMIERZ",
-    "imageURL": "http://www.elektroserw.pl/zdjecia/40_1.jpg",
+    "code": "330435",
+    "name": "Hilti korpus przekladni TE76",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3726_1.g",
     "description": "description",
-    "price": 420.0,
+    "price": 150.0,
     "quantity": 1
   }
 ]
