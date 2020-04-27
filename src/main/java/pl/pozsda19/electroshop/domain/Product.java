@@ -9,6 +9,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
 
     private String name;
