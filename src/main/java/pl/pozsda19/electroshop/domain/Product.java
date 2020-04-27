@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Objects;
+import java.util.*;
+
 @Entity
 @AllArgsConstructor
 public class Product {
@@ -14,11 +15,11 @@ public class Product {
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Category category;
+    @Enumerated(value = EnumType.STRING)
+    private SubCategory subCategory;
 
-    @Enumerated(EnumType.STRING)
-    private SubCategory subcategory;
 
     private String imageURL;
 
@@ -35,19 +36,17 @@ public class Product {
         return code;
     }
 
-    public void setCode(String productCode) {
-        this.code = productCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String productName) {
-        this.name = productName;
+    public void setName(String name) {
+        this.name = name;
     }
-
-
 
     public Category getCategory() {
         return category;
@@ -57,20 +56,20 @@ public class Product {
         this.category = category;
     }
 
-    public SubCategory getSubcategory() {
-        return subcategory;
+    public SubCategory getSubCategory() {
+        return subCategory;
     }
 
-    public void setSubcategory(SubCategory subCategory) {
-        this.subcategory = subCategory;
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     public String getImageURL() {
         return imageURL;
     }
 
-    public void setImageURL(String pictureURL) {
-        this.imageURL = pictureURL;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public String getDescription() {
@@ -105,7 +104,7 @@ public class Product {
         return Objects.equals(code, product.code) &&
                 Objects.equals(name, product.name) &&
                 category == product.category &&
-                subcategory == product.subcategory &&
+                subCategory == product.subCategory &&
                 Objects.equals(imageURL, product.imageURL) &&
                 Objects.equals(description, product.description) &&
                 Objects.equals(price, product.price) &&
@@ -114,6 +113,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(code, name, category, subcategory, imageURL, description, price, quantity);
+        return Objects.hash(code, name, category, subCategory, imageURL, description, price, quantity);
     }
 }
