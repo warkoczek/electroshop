@@ -18,4 +18,8 @@ public class ProductService {
     public List<Product> showAllProducts(){
         return productRepository.findAll();
     }
+
+    public Long addProduct(Product product){
+        return null;
+    }
 }
