@@ -8,12 +8,11 @@ import java.util.Objects;
 @Entity
 @AllArgsConstructor
 public class Product {
+
     @Id
-    private Long productId;
+    private String code;
 
     private String name;
-
-    private String code;
 
     @Enumerated(EnumType.STRING)
     private Category category;
@@ -32,12 +31,12 @@ public class Product {
     public Product() {
     }
 
-    public Long getProductId() {
-        return productId;
+    public String getCode() {
+        return code;
     }
 
-    public void setProductId(Long id) {
-        this.productId = id;
+    public void setCode(String productCode) {
+        this.code = productCode;
     }
 
     public String getName() {
@@ -48,13 +47,7 @@ public class Product {
         this.name = productName;
     }
 
-    public String getCode() {
-        return code;
-    }
 
-    public void setCode(String productCode) {
-        this.code = productCode;
-    }
 
     public Category getCategory() {
         return category;
@@ -109,9 +102,8 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(productId, product.productId) &&
+        return Objects.equals(code, product.code) &&
                 Objects.equals(name, product.name) &&
-                Objects.equals(code, product.code) &&
                 category == product.category &&
                 subcategory == product.subcategory &&
                 Objects.equals(imageURL, product.imageURL) &&
@@ -122,6 +114,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, name, code, category, subcategory, imageURL, description, price, quantity);
+        return Objects.hash(code, name, category, subcategory, imageURL, description, price, quantity);
     }
 }
