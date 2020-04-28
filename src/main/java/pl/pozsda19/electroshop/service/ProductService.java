@@ -41,4 +41,9 @@ public class ProductService {
     private void throwDuplicateProductCodeException(String code){
          throw new DuplicateProductCodeException("Product code "+ code + "in use");
     }
+
+    public Optional<ShowProductModel> showProductByName(String imageURL) {
+
+        return productRepository.findByImageURL(imageURL).map(product -> ShowProductModelInterface.getTypeMap().map(product));
+    }
 }

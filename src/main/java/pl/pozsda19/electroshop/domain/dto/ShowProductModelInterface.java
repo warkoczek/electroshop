@@ -21,6 +21,7 @@ public interface ShowProductModelInterface {
             @Override
             protected void configure() {
                 map().setName(source.getName());
+                map().setCode(source.getCode());
                 map().setImageURL(source.getImageURL());
                 map().setDescription(source.getDescription());
                 map().setPrice(source.getPrice());

@@ -7,6 +7,8 @@ public class ShowProductModel {
 
     private String name;
 
+    private String code;
+
     private String imageURL;
 
     private String description;
@@ -19,6 +21,14 @@ public class ShowProductModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getImageURL() {
@@ -56,6 +66,7 @@ public class ShowProductModel {
         if (o == null || getClass() != o.getClass()) return false;
         ShowProductModel that = (ShowProductModel) o;
         return Objects.equals(name, that.name) &&
+                Objects.equals(code, that.code) &&
                 Objects.equals(imageURL, that.imageURL) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(price, that.price);
@@ -63,6 +74,6 @@ public class ShowProductModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, imageURL, description, price);
+        return Objects.hash(name, code, imageURL, description, price);
     }
 }
