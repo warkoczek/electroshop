@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
+</head>
+<body>
+<h1>My products list</h1>
+<div clas="list-group" th:each="product : ${products}">
+    <a th:href="@{/showProducts}" class="list-group-item list-group-item-action">
+        <p th:text="${product}"/>
+    </a>
+</div>
+
+
+</body>
+</html>

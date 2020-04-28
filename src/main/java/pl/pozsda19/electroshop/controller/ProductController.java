@@ -4,10 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pozsda19.electroshop.domain.Product;
+import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
 import pl.pozsda19.electroshop.service.ProductService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/products")
@@ -20,7 +22,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "", produces = "application/json")
-    public List<Product> showAllProducts(){
+    public Set<ShowProductModel> showAllProducts(){
         return productService.showAllProducts();
     }
 
