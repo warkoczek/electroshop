@@ -8,13 +8,14 @@
 </head>
 <body>
 <h1>Product</h1>
-<div th:object="${product}">
-
-    <p th:text="${product.name}"/>
-    <p th:text="${product.code}"/>
-    <p th:text="${product.description}"/>
-    <p th:text="${product.price}"/>
-
+<div class="list-cell" th:object="${product}">
+<a>
+    <p th:text="${product.name}"></p>
+    <p th:text="${product.code}"></p>
+    <p th:text="${product.imageURL}"></p>
+    <p th:text="${product.description}"></p>
+    <p th:text="${product.price}"></p>
+</a>
 </div>
 
 </body>

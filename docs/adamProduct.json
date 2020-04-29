@@ -8,5 +8,57 @@
     "description": "description",
     "price": 150.0,
     "quantity": 1
+  },
+  {
+    "code": "330131",
+    "name": "Hilti szczotkotrzymacz TE 76",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3725_1.gif",
+    "description": "description",
+    "price": 150.0,
+    "quantity": 1
+  },
+
+  {
+    "code": "330429",
+    "name": "Hilti stojan TE 76",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3724_1.gif",
+    "description": "description",
+    "price": 150.0,
+    "quantity": 1
+  },
+  {
+    "code": "330207",
+    "name": "Hilti korpus silnika TE 76",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3723_1.gif",
+    "description": "description",
+    "price": 150.0,
+    "quantity": 1
+  },
+  {
+    "code": "330078",
+    "name": "Hilti prowadnica do TE 76-ATC",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3637_6.jpg",
+    "description": "description",
+    "price": 100.0,
+    "quantity": 1
+  },
+  {
+    "code": "330070",
+    "name": "Hilti obudowa przekładni do TE 76-ATC",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/normal/3636_17.jpg",
+    "description": "description",
+    "price": 200.0,
+    "quantity": 1
   }
+
 ]

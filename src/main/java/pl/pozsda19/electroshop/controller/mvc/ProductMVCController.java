@@ -3,6 +3,7 @@ package pl.pozsda19.electroshop.controller.mvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Controller
+@RequestMapping(value = "/showProducts")
 public class ProductMVCController {
 
     private final ProductService productService;
@@ -22,7 +24,7 @@ public class ProductMVCController {
         this.productService = productService;
     }
 
-    @GetMapping(value = "/showProducts")
+    @GetMapping(value = "")
     public ModelAndView showProducts(){
         ModelAndView modelAndView = new ModelAndView("showProductsList");
         Set<ShowProductModel> products = productService.showAllProducts();
@@ -30,11 +32,13 @@ public class ProductMVCController {
         return modelAndView;
 
     }
-    @GetMapping(value = "/showProduct")
-    public ModelAndView showProduct(@RequestParam(required = false) String code){
+    @GetMapping(value = "/showProduct/{code}")
+    public ModelAndView showProduct(@PathVariable String code){
         ModelAndView modelAndView = new ModelAndView("showProduct");
         Optional<ShowProductModel> product = productService.showProductByName(code);
-        modelAndView.addObject("product", product.get());
+        if(product.isPresent()) {
+            modelAndView.addObject("product", product.get());
+        }
         return modelAndView;
     }
 }

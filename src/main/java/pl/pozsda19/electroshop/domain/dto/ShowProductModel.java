@@ -1,6 +1,6 @@
 package pl.pozsda19.electroshop.domain.dto;
 
-import java.math.BigDecimal;
+
 import java.util.Objects;
 
 public class ShowProductModel {
@@ -13,7 +13,7 @@ public class ShowProductModel {
 
     private String description;
 
-    private BigDecimal price;
+    private Double price;
 
     public String getName() {
         return name;
@@ -47,11 +47,11 @@ public class ShowProductModel {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
