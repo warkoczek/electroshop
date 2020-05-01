@@ -9,13 +9,16 @@
 <body>
 <h1>Product</h1>
 <div class="list-cell" th:object="${product}">
-<a>
-    <p th:text="${product.name}"></p>
-    <p th:text="${product.code}"></p>
-    <p th:text="${product.imageURL}"></p>
-    <p th:text="${product.description}"></p>
-    <p th:text="${product.price}"></p>
-</a>
+<tbody>
+<tr th:object="${product}">
+
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.code}"></td>
+    <td th:text="${product.imageURL}"></td>
+    <td th:text="${product.description}"></td>
+    <td th:text="${product.price}"></td>
+</tr>
+</tbody>
 </div>
 
 </body>
