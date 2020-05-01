@@ -20,12 +20,11 @@ public class Product {
     @Enumerated(value = EnumType.STRING)
     private Subcategory subcategory;
 
-
     private String imageURL;
 
     private String description;
 
-    private BigDecimal price;
+    private Double price;
 
     private Integer quantity;
 
@@ -82,11 +81,11 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

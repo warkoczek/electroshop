@@ -3,10 +3,11 @@ package pl.pozsda19.electroshop.service;
 import org.springframework.stereotype.Service;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
-import pl.pozsda19.electroshop.domain.dto.ShowProductModelInterface;
+import pl.pozsda19.electroshop.domain.dto.ProductModelReader;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,12 +24,16 @@ public class ProductService {
     public Set<ShowProductModel> showAllProducts(){
         return productRepository.findAll()
                 .stream()
-                .map(product -> ShowProductModelInterface.getTypeMap().map(product))
+                .map(product -> ProductModelReader.getTypeMap().map(product))
                 .collect(Collectors.toSet());
     }
 
-    public Optional<Product> showProductByCode(String code){
+    public Optional<Product> retrieveProductByCode(String code){
         return productRepository.findByCode(code);
+    }
+    public Optional<ShowProductModel> showProductByCode(String code) {
+
+        return productRepository.findByCode(code).map(product -> ProductModelReader.getTypeMap().map(product));
     }
 
     public String addProduct(Product product){
@@ -37,13 +42,11 @@ public class ProductService {
         productRepository.save(product);
         return product.getCode();
     }
-
     private void throwDuplicateProductCodeException(String code){
-         throw new DuplicateProductCodeException("Product code "+ code + "in use");
+        throw new DuplicateProductCodeException("Product code "+ code + " in use");
     }
 
-    public Optional<ShowProductModel> showProductByName(String imageURL) {
-
-        return productRepository.findByImageURL(imageURL).map(product -> ShowProductModelInterface.getTypeMap().map(product));
+    public String addProducts(List<Product> products) {
+        return null;
     }
 }

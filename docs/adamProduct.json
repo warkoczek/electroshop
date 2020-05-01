@@ -8,5 +8,109 @@
     "description": "description",
     "price": 150.0,
     "quantity": 1
+  },
+  {
+    "code": "330131",
+    "name": "Hilti szczotkotrzymacz TE 76",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3725_1.gif",
+    "description": "description",
+    "price": 150.0,
+    "quantity": 1
+  },
+
+  {
+    "code": "330429",
+    "name": "Hilti stojan TE 76",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3724_1.gif",
+    "description": "description",
+    "price": 150.0,
+    "quantity": 1
+  },
+  {
+    "code": "330207",
+    "name": "Hilti korpus silnika TE 76 330207",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3723_1.gif",
+    "description": "description",
+    "price": 150.0,
+    "quantity": 1
+  },
+  {
+    "code": "330078",
+    "name": "Hilti prowadnica do TE 76-ATC 330078",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3637_6.jpg",
+    "description": "description",
+    "price": 100.0,
+    "quantity": 1
+  },
+  {
+    "code": "330070",
+    "name": "Hilti obudowa przekładni do TE 76-ATC 330070",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3636_5.gif",
+    "description": "description",
+    "price": 200.0,
+    "quantity": 1
+  },
+
+  {
+    "code": "330070",
+    "name": "Hilti osłona do TE 76-ATC 330070",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3635_1.gif",
+    "description": "description",
+    "price": 100.0,
+    "quantity": 1
+  },
+
+  {
+    "code": "330015",
+    "name": "Hilti obudowa szczotek do TE 76-ATC 330015",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3634_4.gif",
+    "description": "description",
+    "price": 70.0,
+    "quantity": 1
+  },
+  {
+    "code": "330015",
+    "name": "Hilti obudowa szczotek do TE 76-ATC 330015",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3633_1.gif",
+    "description": "description",
+    "price": 70.0,
+    "quantity": 1
+  },
+  {
+    "code": "330502",
+    "name": "Hilti płyta łożyska do TE 76-ATC 330502",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3632_1.gif",
+    "description": "description",
+    "price": 500.0,
+    "quantity": 1
+  },
+
+  {
+    "code": "DC230-S",
+    "name": "Hilti głowica do szlifierki DC230-S",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE_OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3452_3.jpg",
+    "description": "description",
+    "price": 130.0,
+    "quantity": 1
   }
 ]
