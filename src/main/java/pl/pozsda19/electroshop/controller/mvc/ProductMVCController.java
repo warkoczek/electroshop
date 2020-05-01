@@ -35,10 +35,8 @@ public class ProductMVCController {
     @GetMapping(value = "/showProduct/{code}")
     public ModelAndView showProduct(@PathVariable String code){
         ModelAndView modelAndView = new ModelAndView("showProduct");
-        Optional<ShowProductModel> product = productService.showProductByName(code);
-        if(product.isPresent()) {
-            modelAndView.addObject("product", product.get());
-        }
+        Optional<ShowProductModel> product = productService.showProductByCode(code);
+        product.ifPresent(showProductModel -> modelAndView.addObject("product", showProductModel));
         return modelAndView;
     }
 }

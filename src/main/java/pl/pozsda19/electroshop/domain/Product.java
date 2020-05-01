@@ -20,7 +20,6 @@ public class Product {
     @Enumerated(value = EnumType.STRING)
     private Subcategory subcategory;
 
-
     private String imageURL;
 
     private String description;

@@ -7,7 +7,7 @@ import pl.pozsda19.electroshop.domain.Product;
 
 
 
-public interface ShowProductModelInterface {
+public interface ProductModelReader {
 
     static TypeMap<Product, ShowProductModel>  getTypeMap(){
         ModelMapper modelMapper = new ModelMapper();

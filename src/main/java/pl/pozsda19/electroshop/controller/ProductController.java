@@ -28,7 +28,7 @@ public class ProductController {
 
     @GetMapping(value = "/product/get/{code}", produces = "application/json")
     public ResponseEntity<Product> showProductByCode(@PathVariable String code){
-        Optional<Product> product = productService.showProductByCode(code);
+        Optional<Product> product = productService.retrieveProductByCode(code);
         if(product.isPresent()){
             return ResponseEntity.ok(product.get());
         }
@@ -39,4 +39,12 @@ public class ProductController {
     public ResponseEntity<String> addProduct(@RequestBody Product product){
         return new ResponseEntity(productService.addProduct(product), HttpStatus.CREATED);
     }
+
+    @PostMapping(value = "/product/addAll", consumes = "application/json")
+    public ResponseEntity<String> addProducts(@RequestBody List<Product> products){
+        return new ResponseEntity(productService.addProducts(products), HttpStatus.CREATED);
+    }
+
+
+
 }
