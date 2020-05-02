@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.pozsda19.electroshop.domain.Category;
+import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
+import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,7 +27,36 @@ class ProductServiceTest {
     @Autowired
     private ProductService productService;
 
-
+    @Test
+    void showProductsByCategoryShouldReturnSetSize2ForCZESCIZAMIENNE(){
+        //given
+        Category category = Category.CZESCIZAMIENNE;
+        int expectedSize = 3;
+        //when
+        int actualSize = productService.retrieveProductsByCategory(category).size();
+        //then
+        Assert.assertEquals(expectedSize,actualSize);
+    }
+    @Test
+    void showProductsBySubcategoryShouldReturnSetSize2For(){
+        //given
+        Subcategory subcategory = Subcategory.UZYWANE;
+        int expectedSize = 2;
+        //when
+        int actualSize = productService.retrieveProductsBySubcategory(subcategory).size();
+        //then
+        Assert.assertEquals(expectedSize,actualSize);
+    }
+    @Test
+    void showProductsByGroupShouldReturnSetSize1ForORINGI(){
+        //given
+        Group group = Group.ORINGI;
+        int expectedSize = 1;
+        //when
+        int actualSize = productService.retrieveProductsByGroup(group).size();
+        //then
+        Assert.assertEquals(expectedSize,actualSize);
+    }
     @Test
     void showProductByCodeShouldReturnGivenCategoryForCode330435() {
         //given
@@ -44,7 +76,7 @@ class ProductServiceTest {
     }
 
     @Test
-    void showProductByCodeShouldReturnGivenCategoryForCode0601010000() {
+    void showProductByCodeShouldReturnGivenSubcategoryForCode0601010000() {
         //given
         String code = "0601010000";
         Subcategory expectedSubcategory = Subcategory.WYKRYWACZE;
@@ -62,7 +94,7 @@ class ProductServiceTest {
     @Test()
     void addProductShouldThrowDuplicateCodeExceptionForProductWithCode0601010000() {
        //given
-        Product product = new Product("0601010000", "bla", Category.TECHNIKAPOMIAROWA, Subcategory.WYKRYWACZE
+        Product product = new Product("0601010000", "bla", Category.TECHNIKAPOMIAROWA, Subcategory.WYKRYWACZE, null
                 ,"url","des",300D,1);
         String expectedMessage = "Product code 0601010000 in use";
 
