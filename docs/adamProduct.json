@@ -144,5 +144,27 @@
     "description": "description",
     "price": 199.0,
     "quantity": 1
+  },
+  {
+    "code": "343117",
+    "name": "Hilti osłona przekładni do wiertarki TE 6-C",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE",
+    "group": "OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3294_1.gif",
+    "description": "description",
+    "price": 50.0,
+    "quantity": 1
+  },
+  {
+    "code": "486981",
+    "name": "Festool obudowa do frezarki OF 2000 e/1",
+    "category": "CZESCIZAMIENNE",
+    "subcategory": "UZYWANE",
+    "group": "OBUDOWY",
+    "imageURL": "http://www.elektroserw.pl/zdjecia/3284_4.jpg",
+    "description": "description",
+    "price": 300.0,
+    "quantity": 1
   }
 ]

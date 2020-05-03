@@ -5,6 +5,7 @@ import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Subcategory;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ShowProductModel {
@@ -23,7 +24,7 @@ public class ShowProductModel {
 
     private String description;
 
-    private Double price;
+    private BigDecimal price;
 
     public String getName() {
         return name;
@@ -81,11 +82,11 @@ public class ShowProductModel {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
