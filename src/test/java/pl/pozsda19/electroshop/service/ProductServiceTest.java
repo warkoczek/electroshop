@@ -13,6 +13,7 @@ import pl.pozsda19.electroshop.domain.Subcategory;
 import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.Set;
 
@@ -95,7 +96,7 @@ class ProductServiceTest {
     void addProductShouldThrowDuplicateCodeExceptionForProductWithCode0601010000() {
        //given
         Product product = new Product("0601010000", "bla", Category.TECHNIKAPOMIAROWA, Subcategory.WYKRYWACZE, null
-                ,"url","des",300D,1);
+                ,"url","des", BigDecimal.valueOf(500),1);
         String expectedMessage = "Product code 0601010000 in use";
 
         //when
