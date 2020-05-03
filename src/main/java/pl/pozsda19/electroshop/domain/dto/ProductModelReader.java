@@ -22,6 +22,9 @@ public interface ProductModelReader {
             protected void configure() {
                 map().setName(source.getName());
                 map().setCode(source.getCode());
+                map().setCategory(source.getCategory());
+                map().setSubcategory(source.getSubcategory());
+                map().setGroupo(source.getGroupo());
                 map().setImageURL(source.getImageURL());
                 map().setDescription(source.getDescription());
                 map().setPrice(source.getPrice());

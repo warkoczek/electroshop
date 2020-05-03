@@ -1,7 +1,10 @@
 package pl.pozsda19.electroshop.service;
 
 import org.springframework.stereotype.Service;
+import pl.pozsda19.electroshop.domain.Category;
+import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Product;
+import pl.pozsda19.electroshop.domain.Subcategory;
 import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
 import pl.pozsda19.electroshop.domain.dto.ProductModelReader;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
@@ -32,8 +35,24 @@ public class ProductService {
         return productRepository.findByCode(code);
     }
     public Optional<ShowProductModel> showProductByCode(String code) {
-
         return productRepository.findByCode(code).map(product -> ProductModelReader.getTypeMap().map(product));
+    }
+    public Set<ShowProductModel> retrieveProductsByCategory(Category category){
+        //TODO
+        return productRepository.findProductsByCategory(category).stream()
+                .map(product -> ProductModelReader.getTypeMap().map(product))
+                .collect(Collectors.toSet());
+    }
+    public Set<ShowProductModel> retrieveProductsBySubcategory(Subcategory subcategory){
+
+        return productRepository.findProductsBySubcategory(subcategory).stream()
+                .map(product -> ProductModelReader.getTypeMap().map(product))
+                .collect(Collectors.toSet());
+    }
+    public Set<ShowProductModel> retrieveProductsByGroup(Group groupo){
+        return productRepository.findProductsByGroupo(groupo).stream()
+                .map(product -> ProductModelReader.getTypeMap().map(product))
+                .collect(Collectors.toSet());
     }
 
     public String addProduct(Product product){

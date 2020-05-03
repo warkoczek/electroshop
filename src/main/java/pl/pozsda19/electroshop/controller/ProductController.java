@@ -3,7 +3,9 @@ package pl.pozsda19.electroshop.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Product;
+import pl.pozsda19.electroshop.domain.Subcategory;
 import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
 import pl.pozsda19.electroshop.service.ProductService;
 
@@ -24,6 +26,16 @@ public class ProductController {
     @GetMapping(value = "", produces = "application/json")
     public Set<ShowProductModel> showAllProducts(){
         return productService.showAllProducts();
+    }
+
+    @GetMapping(value = "/category/{category}", produces = "application/json")
+    public Set<ShowProductModel> showProductsByCategory(@PathVariable Category category){
+
+        return productService.retrieveProductsByCategory(category);
+    }
+    @GetMapping(value = "/subcategory/{subcategory}", produces = "application/json")
+    public Set<ShowProductModel> showProductsBySubcategory(@PathVariable Subcategory subcategory){
+        return productService.retrieveProductsBySubcategory(subcategory);
     }
 
     @GetMapping(value = "/product/get/{code}", produces = "application/json")

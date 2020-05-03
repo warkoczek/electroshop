@@ -3,7 +3,6 @@ package pl.pozsda19.electroshop.domain;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
@@ -19,6 +18,8 @@ public class Product {
     private Category category;
     @Enumerated(value = EnumType.STRING)
     private Subcategory subcategory;
+    @Enumerated(value = EnumType.STRING)
+    private Group groupo;
 
     private String imageURL;
 
@@ -30,8 +31,6 @@ public class Product {
 
     public Product() {
     }
-
-
 
     public String getCode() {
         return code;
@@ -63,6 +62,14 @@ public class Product {
 
     public void setSubcategory(Subcategory subCategory) {
         this.subcategory = subCategory;
+    }
+
+    public Group getGroupo() {
+        return groupo;
+    }
+
+    public void setGroupo(Group groupo) {
+        this.groupo = groupo;
     }
 
     public String getImageURL() {
@@ -106,6 +113,7 @@ public class Product {
                 Objects.equals(name, product.name) &&
                 category == product.category &&
                 subcategory == product.subcategory &&
+                groupo == product.groupo &&
                 Objects.equals(imageURL, product.imageURL) &&
                 Objects.equals(description, product.description) &&
                 Objects.equals(price, product.price) &&
@@ -114,6 +122,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(code, name, category, subcategory, imageURL, description, price, quantity);
+        return Objects.hash(code, name, category, subcategory, groupo, imageURL, description, price, quantity);
     }
 }

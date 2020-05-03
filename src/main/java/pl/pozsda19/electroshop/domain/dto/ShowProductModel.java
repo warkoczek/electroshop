@@ -1,6 +1,10 @@
 package pl.pozsda19.electroshop.domain.dto;
 
 
+import pl.pozsda19.electroshop.domain.Category;
+import pl.pozsda19.electroshop.domain.Group;
+import pl.pozsda19.electroshop.domain.Subcategory;
+
 import java.util.Objects;
 
 public class ShowProductModel {
@@ -8,6 +12,12 @@ public class ShowProductModel {
     private String name;
 
     private String code;
+
+    private Category category;
+
+    private Subcategory subcategory;
+
+    private Group groupo;
 
     private String imageURL;
 
@@ -29,6 +39,30 @@ public class ShowProductModel {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public Group getGroupo() {
+        return groupo;
+    }
+
+    public void setGroupo(Group groupo) {
+        this.groupo = groupo;
     }
 
     public String getImageURL() {
@@ -67,6 +101,9 @@ public class ShowProductModel {
         ShowProductModel that = (ShowProductModel) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(code, that.code) &&
+                category == that.category &&
+                subcategory == that.subcategory &&
+                groupo == that.groupo &&
                 Objects.equals(imageURL, that.imageURL) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(price, that.price);
@@ -74,6 +111,6 @@ public class ShowProductModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, code, imageURL, description, price);
+        return Objects.hash(name, code, category, subcategory, groupo, imageURL, description, price);
     }
 }
