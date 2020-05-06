@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
-@AllArgsConstructor
 public class Product {
 
     @Id
@@ -30,7 +29,21 @@ public class Product {
 
     private Integer quantity;
 
+    public String getStringFromCategory(){
+        return getCategory().toString();
+    }
+
     public Product() {
+    }
+    public Product(String code, String name, Category category, Subcategory subcategory, String imageURL
+    , String description, BigDecimal price){
+        this.code=code;
+        this.name=name;
+        this.category=category;
+        this.subcategory=subcategory;
+        this.imageURL=imageURL;
+        this.description=description;
+        this.price=price;
     }
 
     public String getCode() {
