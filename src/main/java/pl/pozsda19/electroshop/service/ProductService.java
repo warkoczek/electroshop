@@ -29,7 +29,7 @@ public class ProductService {
     public Set<ReadProductModel> showAllProducts(){
         return productRepository.findAll()
                 .stream()
-                .map(product -> productMapper.fromProductEntity(product))
+                .map(product -> productMapper.productToDTO(product))
                 .collect(Collectors.toSet());
     }
 
@@ -37,22 +37,22 @@ public class ProductService {
         return productRepository.findByCode(code);
     }
     public Optional<ReadProductModel> showProductByCode(String code) {
-        return productRepository.findByCode(code).map(product -> productMapper.fromProductEntity(product));
+        return productRepository.findByCode(code).map(product -> productMapper.productToDTO(product));
     }
     public Set<ReadProductModel> retrieveProductsByCategory(Category category){
         return productRepository.findProductsByCategory(category).stream()
-                .map(product -> productMapper.fromProductEntity(product))
+                .map(product -> productMapper.productToDTO(product))
                 .collect(Collectors.toSet());
     }
     public Set<ReadProductModel> retrieveProductsBySubcategory(Subcategory subcategory){
 
         return productRepository.findProductsBySubcategory(subcategory).stream()
-                .map(product -> productMapper.fromProductEntity(product))
+                .map(product -> productMapper.productToDTO(product))
                 .collect(Collectors.toSet());
     }
     public Set<ReadProductModel> retrieveProductsByGroup(Group groupo){
         return productRepository.findProductsByGroupo(groupo).stream()
-                .map(product -> productMapper.fromProductEntity(product))
+                .map(product -> productMapper.productToDTO(product))
                 .collect(Collectors.toSet());
     }
 

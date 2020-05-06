@@ -6,5 +6,5 @@ import pl.pozsda19.electroshop.domain.Product;
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
 
-    ReadProductModel fromProductEntity(Product product);
+    ReadProductModel productToDTO(Product product);
 }

@@ -22,4 +22,6 @@ public class ReadProductModel {
 
     public BigDecimal price;
 
+
+
 }
