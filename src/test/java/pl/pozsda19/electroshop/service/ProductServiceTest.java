@@ -10,12 +10,11 @@ import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
-import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
+import pl.pozsda19.electroshop.domain.dto.ReadProductModel;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 
 import java.math.BigDecimal;
 import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -29,7 +28,7 @@ class ProductServiceTest {
     private ProductService productService;
 
     @Test
-    void showProductsByCategoryShouldReturnSetSize2ForCZESCIZAMIENNE(){
+    void showProductsByCategoryShouldReturnSetSize3ForCZESCIZAMIENNE(){
         //given
         Category category = Category.CZESCIZAMIENNE;
         int expectedSize = 3;
@@ -90,13 +89,25 @@ class ProductServiceTest {
         Assert.assertEquals(expectedSubcategory, actualSubcategory);
 
     }
+    @Test
+    void showProductByCodeShouldReturnReadProductModelWithCategoryTECHNIKAPOMIAROWA(){
+        //given
+        String code = "0601010000";
+        String expectedCategory = "TECHNIKAPOMIAROWA";
+        //when
+        Optional<ReadProductModel> readProductModel = productService.showProductByCode(code);
+        String actualCategory = readProductModel.get().category;
+        //then
+        Assert.assertEquals(expectedCategory,actualCategory);
+    }
+
 
 
     @Test()
     void addProductShouldThrowDuplicateCodeExceptionForProductWithCode0601010000() {
        //given
-        Product product = new Product("0601010000", "bla", Category.TECHNIKAPOMIAROWA, Subcategory.WYKRYWACZE, null
-                ,"url","des", BigDecimal.valueOf(500),1);
+        Product product = new Product("0601010000", "bla", Category.TECHNIKAPOMIAROWA, Subcategory.WYKRYWACZE
+                ,"url","des", BigDecimal.valueOf(500));
         String expectedMessage = "Product code 0601010000 in use";
 
         //when
@@ -107,6 +118,19 @@ class ProductServiceTest {
         //then
         assertTrue(actualMessage.contains(expectedMessage));
 
+    }
+
+    @Test
+    void getStringFromCategoryShouldReturnStringForGivenEnum(){
+        //given
+        Product product = new Product("0601010000", "bla", Category.TECHNIKAPOMIAROWA, Subcategory.WYKRYWACZE
+                ,"url","des", BigDecimal.valueOf(500));
+
+        String expectedCategoryString = "TECHNIKAPOMIAROWA";
+        //when
+        String actualCategoryString = product.getStringFromCategory();
+        //then
+        Assert.assertEquals(expectedCategoryString,actualCategoryString);
     }
 
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
-import pl.pozsda19.electroshop.domain.dto.ShowProductModel;
+import pl.pozsda19.electroshop.domain.dto.ReadProductModel;
 import pl.pozsda19.electroshop.service.ProductService;
 
 import java.util.List;
@@ -24,17 +24,17 @@ public class ProductController {
     }
 
     @GetMapping(value = "", produces = "application/json")
-    public Set<ShowProductModel> showAllProducts(){
+    public Set<ReadProductModel> showAllProducts(){
         return productService.showAllProducts();
     }
 
     @GetMapping(value = "/category/{category}", produces = "application/json")
-    public Set<ShowProductModel> showProductsByCategory(@PathVariable Category category){
+    public Set<ReadProductModel> showProductsByCategory(@PathVariable Category category){
 
         return productService.retrieveProductsByCategory(category);
     }
     @GetMapping(value = "/subcategory/{subcategory}", produces = "application/json")
-    public Set<ShowProductModel> showProductsBySubcategory(@PathVariable Subcategory subcategory){
+    public Set<ReadProductModel> showProductsBySubcategory(@PathVariable Subcategory subcategory){
         return productService.retrieveProductsBySubcategory(subcategory);
     }
 
