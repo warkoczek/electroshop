@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.dto.ReadProductModel;
+import pl.pozsda19.electroshop.service.ProductSearchingService;
 import pl.pozsda19.electroshop.service.ProductService;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -37,8 +40,4 @@ public class ProductMVCController {
         productModel.ifPresent(showProductModel -> modelAndView.addObject("product", showProductModel));
         return modelAndView;
     }
-
-
-
-
 }

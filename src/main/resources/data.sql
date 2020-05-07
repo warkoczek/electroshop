@@ -6,6 +6,6 @@ insert  into PRODUCT(code, name, category, subcategory, imageURL, description, p
 
 insert  into PRODUCT(code, name, category, subcategory, groupo, imageURL, description, price, quantity)values ('453', 'Wykrywacz przewodów BOSCH DMF 10 Zoom', 'CZESCIZAMIENNE', 'UZYWANE', 'WIRNIKI', 'http://www.elektroserw.pl/zdjecia/29_2.jpg', 'description', 500.00, 1);
 insert  into PRODUCT(code, name, category, subcategory, groupo, imageURL, description, price, quantity)values ('111', 'Wykrywacz przewodów BOSCH DMF 10 Zoom', 'CZESCIZAMIENNE', 'UZYWANE', 'OBUDOWY', 'http://www.elektroserw.pl/zdjecia/29_2.jpg', 'description', 500.00, 1);
-insert  into PRODUCT(code, name, category, subcategory, groupo, imageURL, description, price, quantity)values ('112', 'Wykrywacz przewodów BOSCH DMF 10 Zoom', 'CZESCIZAMIENNE', 'NOWE', 'ORINGI', 'http://www.elektroserw.pl/zdjecia/29_2.jpg', 'description', 500.00, 1);
+insert  into PRODUCT(code, name, category, subcategory, groupo, imageURL, description, price, quantity)values ('112', 'Wykrywacz przewodów BOSCH DMF 10 Zoom', 'CZESCIZAMIENNE', 'NOWE', 'ORINGI', 'http://www.elektroserw.pl/zdjecia/29_2.jpg', 'description', 400.00, 1);
 
 commit;
