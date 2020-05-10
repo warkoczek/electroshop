@@ -7,7 +7,6 @@ import pl.pozsda19.electroshop.domain.dto.ProductMapper;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
-import java.util.Optional;
 
 @Service
 public class ProductManagementService {
