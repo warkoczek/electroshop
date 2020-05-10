@@ -22,15 +22,17 @@ public class ProductManagementService {
 
     public Product createProduct(ProductEntityWriting toProductEntity){
 
-        Optional<Product> productByCode = productRepository.findByCode(toProductEntity.getCode()).orElse();
-        if(productByCode.isPresent()){
-            throw new DuplicateProductCodeException("code reserved");
-        }
+        productRepository.findByCode(toProductEntity.getCode()).ifPresent(product ->
+                throwDuplicateProductCodeException());
         Product product = productMapper.writeProductEntity(toProductEntity);
 
         product =  productRepository.save(product);
 
         return product;
+    }
+
+    private DuplicateProductCodeException throwDuplicateProductCodeException(){
+        return new DuplicateProductCodeException("code reserved");
     }
 
 
