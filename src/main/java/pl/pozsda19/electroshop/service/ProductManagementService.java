@@ -23,6 +23,7 @@ public class ProductManagementService {
 
         productRepository.findByCode(toProductEntity.getCode()).ifPresent(product ->
                 throwDuplicateProductCodeException());
+
         Product product = productMapper.writeProductEntity(toProductEntity);
 
         product =  productRepository.save(product);
