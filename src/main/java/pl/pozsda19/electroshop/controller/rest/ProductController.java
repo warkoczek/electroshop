@@ -1,4 +1,4 @@
-package pl.pozsda19.electroshop.controller;
+package pl.pozsda19.electroshop.controller.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
-import pl.pozsda19.electroshop.domain.dto.ReadProductModel;
+import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
 import pl.pozsda19.electroshop.service.ProductService;
 
 import java.util.List;
@@ -24,17 +24,17 @@ public class ProductController {
     }
 
     @GetMapping(value = "", produces = "application/json")
-    public Set<ReadProductModel> showAllProducts(){
+    public Set<ProductEntityReading> showAllProducts(){
         return productService.showAllProducts();
     }
 
     @GetMapping(value = "/category/{category}", produces = "application/json")
-    public Set<ReadProductModel> showProductsByCategory(@PathVariable Category category){
+    public Set<ProductEntityReading> showProductsByCategory(@PathVariable Category category){
 
         return productService.retrieveProductsByCategory(category);
     }
     @GetMapping(value = "/subcategory/{subcategory}", produces = "application/json")
-    public Set<ReadProductModel> showProductsBySubcategory(@PathVariable Subcategory subcategory){
+    public Set<ProductEntityReading> showProductsBySubcategory(@PathVariable Subcategory subcategory){
         return productService.retrieveProductsBySubcategory(subcategory);
     }
 
