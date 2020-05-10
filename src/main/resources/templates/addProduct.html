@@ -8,9 +8,9 @@
 </head>
 <body>
 <h1>Dodaj Produkt</h1><br>
-
+<h2 th:if="${message != null}" th:text="${message}"></h2>
     <!--/*@thymesVar id="product" type="pl.pozsda19.electroshop.domain.dto.ProductEntityWriting"*/-->
-    <form action="#" method="post">
+    <form action="#" method="post" th:action="@{/productAdministration/addProduct}" th:object="${product}">
         <legend>Nowy Produkt</legend>
         <fieldset>
             <label>Kod<input th:type="text"/></label>
@@ -25,6 +25,7 @@
             <p>
                 <button type="submit">Dodaj</button>
                 <button type="reset">Resetuj</button>
+                <a th:href="@{/productAdministration/showProducts}">Powrót</a>
             </p>
         </fieldset>
 
