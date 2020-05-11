@@ -10,7 +10,7 @@ import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
-import pl.pozsda19.electroshop.domain.dto.ReadProductModel;
+import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 
 import java.math.BigDecimal;
@@ -95,7 +95,7 @@ class ProductServiceTest {
         String code = "0601010000";
         String expectedCategory = "TECHNIKAPOMIAROWA";
         //when
-        Optional<ReadProductModel> readProductModel = productService.showProductByCode(code);
+        Optional<ProductEntityReading> readProductModel = productService.showProductByCode(code);
         String actualCategory = readProductModel.get().category;
         //then
         Assert.assertEquals(expectedCategory,actualCategory);

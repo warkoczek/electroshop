@@ -5,8 +5,8 @@ import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
+import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
 import pl.pozsda19.electroshop.domain.dto.ProductMapper;
-import pl.pozsda19.electroshop.domain.dto.ReadProductModel;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
@@ -26,33 +26,33 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
-    public Set<ReadProductModel> showAllProducts(){
+    public Set<ProductEntityReading> showAllProducts(){
         return productRepository.findAll()
                 .stream()
-                .map(product -> productMapper.productToDTO(product))
+                .map(product -> productMapper.readProductEntity(product))
                 .collect(Collectors.toSet());
     }
 
     public Optional<Product> retrieveProductByCode(String code){
         return productRepository.findByCode(code);
     }
-    public Optional<ReadProductModel> showProductByCode(String code) {
-        return productRepository.findByCode(code).map(product -> productMapper.productToDTO(product));
+    public Optional<ProductEntityReading> showProductByCode(String code) {
+        return productRepository.findByCode(code).map(product -> productMapper.readProductEntity(product));
     }
-    public Set<ReadProductModel> retrieveProductsByCategory(Category category){
+    public Set<ProductEntityReading> retrieveProductsByCategory(Category category){
         return productRepository.findProductsByCategory(category).stream()
-                .map(product -> productMapper.productToDTO(product))
+                .map(product -> productMapper.readProductEntity(product))
                 .collect(Collectors.toSet());
     }
-    public Set<ReadProductModel> retrieveProductsBySubcategory(Subcategory subcategory){
+    public Set<ProductEntityReading> retrieveProductsBySubcategory(Subcategory subcategory){
 
         return productRepository.findProductsBySubcategory(subcategory).stream()
-                .map(product -> productMapper.productToDTO(product))
+                .map(product -> productMapper.readProductEntity(product))
                 .collect(Collectors.toSet());
     }
-    public Set<ReadProductModel> retrieveProductsByGroup(Group groupo){
+    public Set<ProductEntityReading> retrieveProductsByGroup(Group groupo){
         return productRepository.findProductsByGroupo(groupo).stream()
-                .map(product -> productMapper.productToDTO(product))
+                .map(product -> productMapper.readProductEntity(product))
                 .collect(Collectors.toSet());
     }
 

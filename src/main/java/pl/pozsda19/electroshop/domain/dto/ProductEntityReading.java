@@ -4,7 +4,7 @@ package pl.pozsda19.electroshop.domain.dto;
 import java.math.BigDecimal;
 
 
-public class ReadProductModel {
+public class ProductEntityReading {
 
     public String name;
 
@@ -21,7 +21,5 @@ public class ReadProductModel {
     public String description;
 
     public BigDecimal price;
-
-
 
 }
