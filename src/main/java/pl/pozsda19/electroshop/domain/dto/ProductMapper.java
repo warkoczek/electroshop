@@ -7,5 +7,5 @@ import pl.pozsda19.electroshop.domain.Product;
 public interface ProductMapper {
 
     ProductEntityReading readProductEntity(Product product);
-    Product writeProductEntity(ProductEntityWriting creationPM);
+    Product writeProductEntity(ProductEntityWriting toProductEntity);
 }

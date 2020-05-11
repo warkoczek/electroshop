@@ -1,5 +1,6 @@
 package pl.pozsda19.electroshop.controller.mvc;
 
+import org.dom4j.rule.Mode;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,18 +40,15 @@ public class ProductManagementMVCController {
     }
 
     @GetMapping("/addProduct")
-    public String showAddProductForm(){
+    public String showAddProductForm(Model model){
+        model.addAttribute("product", new ProductEntityWriting());
         return "addProduct";
     }
 
     @PostMapping("/addProduct")
-    public String createProduct(@ModelAttribute("product") ProductEntityWriting productEntityWriting, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "addProduct";
-        }
+    public String createProduct(@ModelAttribute("product") ProductEntityWriting productEntityWriting){
+
         productManagementService.createProduct(productEntityWriting);
-        model.addAttribute("product", new ProductEntityWriting());
-        model.addAttribute("message", "Dodano product");
         return "addProduct";
     }
 
