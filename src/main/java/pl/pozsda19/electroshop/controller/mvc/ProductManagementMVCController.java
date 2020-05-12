@@ -47,11 +47,17 @@ public class ProductManagementMVCController {
     }
 
     @PostMapping("/addProduct")
-    public ModelAndView createProduct(@Valid @ModelAttribute("product") ProductEntityWriting productEntityWriting){
+    public String createProduct(
+            @Valid @ModelAttribute("product") ProductEntityWriting productEntityWriting,
+            ModelAndView modelAndView,
+            BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "addProduct";
+        }
         productManagementService.createProduct(productEntityWriting);
-        ModelAndView modelAndView = new ModelAndView("productCreated");
+        modelAndView.setViewName("productCreated");
         modelAndView.addObject("message", "Nowy produkt został pomyślnie dodany!!!");
-        return modelAndView;
+        return "productCreated";
     }
 
 

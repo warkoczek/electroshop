@@ -5,22 +5,22 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class ProductEntityWriting {
-    @NotBlank
-    protected String code;
-    @NotBlank
-    protected String name;
-    @NotBlank
-    protected String category;
-    @NotBlank
-    private String subcategory;
+    @NotBlank(message = "Musi być unikatowe")
+    public String code;
+    @NotBlank(message = "Obowiązkowa")
+    public String name;
+    @NotBlank(message = "Obowiązkowa")
+    public String category;
+    @NotBlank(message = "Obowiązkowa")
+    public String subcategory;
     @NotNull
-    protected String groupo;
-    @NotBlank
-    protected String imageURL;
-    protected String description;
+    public String groupo;
+    @NotBlank(message = "Obowiązkowa")
+    public String imageURL;
+    public String description;
     @NotNull
-    protected Double price;
-    protected int quantity;
+    public Double price;
+    public int quantity;
 
     public ProductEntityWriting() {
     }
