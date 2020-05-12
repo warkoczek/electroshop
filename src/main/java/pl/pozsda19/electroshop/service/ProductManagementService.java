@@ -25,14 +25,13 @@ public class ProductManagementService {
                 throwDuplicateProductCodeException());
 
         Product product = productMapper.writeProductEntity(toProductEntity);
-
         product =  productRepository.save(product);
 
         return product;
     }
 
-    private DuplicateProductCodeException throwDuplicateProductCodeException(){
-        return new DuplicateProductCodeException("code reserved");
+    private void throwDuplicateProductCodeException(){
+        throw new DuplicateProductCodeException("code reserved");
     }
 
 

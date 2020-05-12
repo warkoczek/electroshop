@@ -46,10 +46,11 @@ public class ProductManagementMVCController {
     }
 
     @PostMapping("/addProduct")
-    public String createProduct(@ModelAttribute("product") ProductEntityWriting productEntityWriting){
-
+    public ModelAndView createProduct(@ModelAttribute("product") ProductEntityWriting productEntityWriting){
         productManagementService.createProduct(productEntityWriting);
-        return "addProduct";
+        ModelAndView modelAndView = new ModelAndView("productCreated");
+        modelAndView.addObject("message", "Nowy produkt został pomyślnie dodany!!!");
+        return modelAndView;
     }
 
 
