@@ -1,16 +1,26 @@
 package pl.pozsda19.electroshop.domain.dto;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class ProductEntityWriting {
-    public String code;
-    public String name;
-    public String category;
-    public String subcategory;
-    public String groupo;
-    public String imageURL;
-    public String description;
-    public Double price;
-    public int quantity;
+    @NotBlank
+    protected String code;
+    @NotBlank
+    protected String name;
+    @NotBlank
+    protected String category;
+    @NotBlank
+    private String subcategory;
+    @NotNull
+    protected String groupo;
+    @NotBlank
+    protected String imageURL;
+    protected String description;
+    @NotNull
+    protected Double price;
+    protected int quantity;
 
     public ProductEntityWriting() {
     }

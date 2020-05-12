@@ -16,6 +16,7 @@ import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 import pl.pozsda19.electroshop.service.ProductManagementService;
 import pl.pozsda19.electroshop.service.ProductService;
 
+import javax.validation.Valid;
 import java.util.Set;
 
 
@@ -46,7 +47,7 @@ public class ProductManagementMVCController {
     }
 
     @PostMapping("/addProduct")
-    public ModelAndView createProduct(@ModelAttribute("product") ProductEntityWriting productEntityWriting){
+    public ModelAndView createProduct(@Valid @ModelAttribute("product") ProductEntityWriting productEntityWriting){
         productManagementService.createProduct(productEntityWriting);
         ModelAndView modelAndView = new ModelAndView("productCreated");
         modelAndView.addObject("message", "Nowy produkt został pomyślnie dodany!!!");
