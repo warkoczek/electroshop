@@ -11,7 +11,6 @@
     <!--/*@thymesVar id="product" type="pl.pozsda19.electroshop.domain.dto.ProductEntityWriting"*/-->
     <form action="#" method="post" th:action="@{/productAdministration/addProduct}" th:object="${product}">
         <legend>Nowy Produkt</legend>
-        <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}">Incorrect date</p>
         <fieldset>
             <label>Kod<input th:type="text" th:field="${product.code}"/></label>
             <label>Nazwa<input th:type="text" th:field="${product.name}"/></label>
