@@ -7,6 +7,8 @@ import pl.pozsda19.electroshop.domain.dto.ProductMapper;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
+import java.util.Optional;
+
 
 @Service
 public class ProductManagementService {
@@ -18,21 +20,22 @@ public class ProductManagementService {
         this.productRepository = productRepository;
         this.productMapper=productMapper;
     }
+    public boolean productExists(String code){
+        return productRepository.existsByCode(code);
+    }
 
     public Product createProduct(ProductEntityWriting toProductEntity){
 
-        productRepository.findByCode(toProductEntity.getCode()).ifPresent(product ->
-                throwDuplicateProductCodeException());
+        Product product = productRepository
+                .findByCode(toProductEntity.getCode()).orElse(productMapper.writeProductEntity(toProductEntity));
 
-        Product product = productMapper.writeProductEntity(toProductEntity);
-
-        product =  productRepository.save(product);
+        productRepository.save(product);
 
         return product;
     }
 
-    private DuplicateProductCodeException throwDuplicateProductCodeException(){
-        return new DuplicateProductCodeException("code reserved");
+    private void throwDuplicateProductCodeException(){
+        throw new DuplicateProductCodeException("code reserved");
     }
 
 

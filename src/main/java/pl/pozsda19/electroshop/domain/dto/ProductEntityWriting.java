@@ -1,14 +1,24 @@
 package pl.pozsda19.electroshop.domain.dto;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class ProductEntityWriting {
+    @NotBlank(message = "Musi być unikatowe")
     public String code;
+    @NotBlank(message = "Obowiązkowa")
     public String name;
+    @NotBlank(message = "Obowiązkowa")
     public String category;
+    @NotBlank(message = "Obowiązkowa")
     public String subcategory;
+    @NotNull
     public String groupo;
+    @NotBlank(message = "Obowiązkowa")
     public String imageURL;
     public String description;
+    @NotNull
     public Double price;
     public int quantity;
 

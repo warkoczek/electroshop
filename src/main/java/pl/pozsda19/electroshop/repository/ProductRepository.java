@@ -20,5 +20,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Set<Product> findProductsByCategory(Category category);
     Set<Product> findProductsBySubcategory(Subcategory subcategory);
     Set<Product> findProductsByGroupo(Group groupo);
+    boolean existsByCode(String code);
 
 }

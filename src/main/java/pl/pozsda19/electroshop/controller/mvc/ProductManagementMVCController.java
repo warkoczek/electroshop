@@ -1,21 +1,17 @@
 package pl.pozsda19.electroshop.controller.mvc;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.ModelAndView;
-import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
+
 import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
+import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.service.ProductManagementService;
 import pl.pozsda19.electroshop.service.ProductService;
 
-import java.util.Set;
+import javax.validation.Valid;
 
 
 @Controller
@@ -30,28 +26,28 @@ public class ProductManagementMVCController {
         this.productService=productService;
     }
 
-    @GetMapping(value = "/showProducts")
-    public ModelAndView showProducts() {
-        ModelAndView modelAndView = new ModelAndView("showProductsList");
-        Set<ProductEntityReading> products = productService.showAllProducts();
-        modelAndView.addObject("products", products);
-        return modelAndView;
-    }
-
     @GetMapping("/addProduct")
-    public String showAddProductForm(){
+    public String showAddProductForm(Model model){
+        model.addAttribute("product", new ProductEntityWriting());
         return "addProduct";
     }
 
     @PostMapping("/addProduct")
-    public String createProduct(@ModelAttribute("product") ProductEntityWriting productEntityWriting, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "addProduct";
+    public ModelAndView createProduct(
+            @Valid @ModelAttribute("product") ProductEntityWriting productEntityWriting
+            , ModelAndView modelAndView){
+        if(productManagementService.productExists(productEntityWriting.getCode())){
+            throw new DuplicateProductCodeException("Kod juz istnieje!!!");
         }
+        modelAndView.setViewName("productCreated");
         productManagementService.createProduct(productEntityWriting);
-        model.addAttribute("product", new ProductEntityWriting());
-        model.addAttribute("message", "Dodano product");
-        return "addProduct";
+        modelAndView.addObject("message", "Nowy produkt został pomyślnie dodany!!!");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(value = DuplicateProductCodeException.class)
+    public String exceptionHandler(){
+        return "DuplicateProductCodeException";
     }
 
 
