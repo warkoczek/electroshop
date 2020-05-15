@@ -13,7 +13,6 @@ import pl.pozsda19.electroshop.service.ProductService;
 
 import javax.validation.Valid;
 
-
 @Controller
 @RequestMapping("/productAdministration")
 public class ProductManagementMVCController {
@@ -49,9 +48,5 @@ public class ProductManagementMVCController {
     public String exceptionHandler(){
         return "DuplicateProductCodeException";
     }
-
-
-
-
 
 }
