@@ -2,6 +2,7 @@ package pl.pozsda19.electroshop.service;
 
 import org.springframework.stereotype.Service;
 import pl.pozsda19.electroshop.domain.Product;
+import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 import pl.pozsda19.electroshop.domain.dto.ProductMapper;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
@@ -24,6 +25,9 @@ public class ProductManagementService {
     public List<Product> showAllProducts(){
         return productRepository.findAll();
     }
+    public Optional<Product> showProductByCode(String code){
+        return productRepository.findByCode(code);
+    }
     public boolean productExists(String code){
         return productRepository.existsByCode(code);
     }
@@ -35,8 +39,12 @@ public class ProductManagementService {
     }
 
     public void updateProduct(ProductEntityWriting productEntityWriting){
-        productRepository.findByCode(productEntityWriting.getCode());
-
+        Optional<Product> toUpdate = productRepository.findByCode(productEntityWriting.getCode());
+        if(toUpdate.isPresent()) {
+            productRepository.delete(toUpdate.get());
+        }
+        Product productUpdate = productMapper.writeProductEntity(productEntityWriting);
+        productRepository.save(productUpdate);
     }
 
 
