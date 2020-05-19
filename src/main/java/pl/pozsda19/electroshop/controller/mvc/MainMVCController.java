@@ -5,11 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "index.html")
+
 public class MainMVCController {
 
-    @GetMapping(value = "")
-    public String getMainPage(){
+    @GetMapping(value = "/index")
+    public String getIndexPage(){
         return "index";
     }
+
+    @GetMapping(value = "/showProductsCSS")
+    public String getShowProductsPage(){
+        return "showProductsListCSS";
+    }
+
 }

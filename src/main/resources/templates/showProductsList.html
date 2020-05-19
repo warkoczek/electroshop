@@ -7,17 +7,36 @@
     <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
 </head>
 <body>
+<style type="text/css">
+    .container {
+        width: 90%;
+        height: auto;
+        background: skyblue;
+        display: flex;
+
+    }
+    .box {
+        width: 20%;
+        height: 100px;
+        border: 1px solid blue;
+        background-color: yellow;
+        margin: 20px;
+        box-sizing: border-box;
+        font-size: 10px;
+    }
+</style>
 
 <h1>Products</h1>
-<div class="list-group" th:each="product : ${products}">
-    <br>
-    <a th:href="@{/showProducts/showProduct/{code}(code=${product.code})}" class="list-group-item list-group-item-action">
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.price}"></td>
-        <p th:text="${product.code}"></p>
-    </a>
 
+<div class="container" th:each="product : ${products}">
+    <div class="box">
+        <a th:href="@{/showProducts/showProduct/{code}(code=${product.code})}">
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.code}"></td>
+        </a>
+    </div>
 </div>
 
 </body>
