@@ -7,9 +7,12 @@ import pl.pozsda19.electroshop.domain.dto.ProductMapper;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Comparator.comparing;
 
 
 @Service
@@ -25,7 +28,14 @@ public class ProductSearchingService {
 
     public List<ProductEntityReading> showProductsByCategoryPriceUp(Category category){
        return productRepository.findProductsByCategory(category).stream()
-                .sorted(Comparator.comparing(Product::getPrice))
+                .sorted(comparing(Product::getPrice))
+                .map(productMapper::readProductEntity)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductEntityReading> showProductsByCategoryPriceDown(Category category){
+        return productRepository.findProductsByCategory(category).stream()
+                .sorted(comparing(Product::getPrice).reversed())
                 .map(productMapper::readProductEntity)
                 .collect(Collectors.toList());
     }

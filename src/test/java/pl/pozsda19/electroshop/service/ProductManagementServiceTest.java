@@ -14,7 +14,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 
+import java.util.List;
 
+import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
@@ -23,6 +25,16 @@ class ProductManagementServiceTest {
 
     @Autowired
     private ProductManagementService productManagementService;
+
+    @Test
+    void showAllProductsEndpointShouldReturn7Products(){
+        //given
+        int expectedSize = 7;
+        //when
+        int actualSize = productManagementService.showAllProducts().size();
+        //then
+        Assert.assertEquals(expectedSize,actualSize);
+    }
 
 
     @Test

@@ -29,4 +29,12 @@ public class ProductSearchingController {
         }
         return ResponseEntity.ok(products);
     }
+    @GetMapping(value = "/sorted/priceDown/{category}")
+    public ResponseEntity<List<ProductEntityReading>> showSortedProductsByCategoryPriceDown(@PathVariable Category category){
+        List<ProductEntityReading> products = productSearchingService.showProductsByCategoryPriceDown(category);
+        if(products.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(products);
+    }
 }

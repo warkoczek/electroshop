@@ -1,9 +1,11 @@
 package pl.pozsda19.electroshop.domain.dto;
 
 
+import lombok.ToString;
+
 import java.math.BigDecimal;
 
-
+@ToString
 public class ProductEntityReading {
 
     public String name;

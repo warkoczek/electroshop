@@ -28,4 +28,12 @@ public class ProductSearchingMVCController {
         modelAndView.addObject("products", products);
         return modelAndView;
     }
+
+    @GetMapping("/sorted/priceDown/{category}")
+    public ModelAndView showSortedProductsByCategoryPriceDown(@PathVariable Category category){
+        ModelAndView modelAndView = new ModelAndView("showProductsList");
+        List<ProductEntityReading> products = productSearchingService.showProductsByCategoryPriceDown(category);
+        modelAndView.addObject("products", products);
+        return modelAndView;
+    }
 }
