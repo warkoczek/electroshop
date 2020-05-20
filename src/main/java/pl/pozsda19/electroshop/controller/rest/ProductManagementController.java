@@ -10,6 +10,7 @@ import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 import pl.pozsda19.electroshop.service.ProductManagementService;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.Set;
 
@@ -37,9 +38,10 @@ public class ProductManagementController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<Void> updateProduct(){
-        return null;
+    @PutMapping("/update")
+    public ResponseEntity<Product> updateProduct(@RequestBody ProductEntityWriting productEntityWriting){
+
+        return ResponseEntity.ok(productManagementService.updateProduct(productEntityWriting));
     }
 
 

@@ -6,6 +6,7 @@ import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 import pl.pozsda19.electroshop.domain.dto.ProductMapper;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
+import pl.pozsda19.electroshop.exception.ProductNotFoundException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
 import java.util.List;
@@ -38,13 +39,16 @@ public class ProductManagementService {
         return product;
     }
 
-    public void updateProduct(ProductEntityWriting productEntityWriting){
+    public Product updateProduct(ProductEntityWriting productEntityWriting){
         Optional<Product> toUpdate = productRepository.findByCode(productEntityWriting.getCode());
-        if(toUpdate.isPresent()) {
-            productRepository.delete(toUpdate.get());
+        if(toUpdate.isEmpty()) {
+            throw new ProductNotFoundException("Brak produktu o podanym kodzie");
         }
+        productRepository.delete(toUpdate.get());
         Product productUpdate = productMapper.writeProductEntity(productEntityWriting);
         productRepository.save(productUpdate);
+        return productUpdate;
+
     }
 
 

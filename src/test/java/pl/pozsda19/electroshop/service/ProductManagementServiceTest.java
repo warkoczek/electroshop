@@ -12,9 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
@@ -47,6 +49,22 @@ class ProductManagementServiceTest {
         String actualProductCode = productManagementService.createProduct(product).getCode();
         //then
         Assert.assertEquals(expectedCode, actualProductCode);
+
+    }
+    @Test
+    void updateProductWithKnownIdShouldUpdatedTheProduct(){
+        //given
+        ProductEntityWriting product = new ProductEntityWriting("453"
+                , "Wykrywacz przewodów BOSCH DMF 10 Zoom", "CZESCIZAMIENNE"
+                , "UZYWANE", "WIRNIKI"
+                , "http://www.elektroserw.pl/zdjecia/29_2.jpg", "opis"
+                , 500.00, 1);
+        String expectedDescription = "opis";
+        //when
+        productManagementService.updateProduct(product);
+        String actualDescription = productManagementService.showProductByCode("453").get().getDescription();
+        //then
+        Assert.assertEquals(expectedDescription,actualDescription);
 
     }
 }

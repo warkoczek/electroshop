@@ -33,7 +33,7 @@ class ProductSearchingServiceTest {
     }
 
     @Test
-    void showProductByCategoryPriceDownShouldReturnHighestPrice850ForFirstProductInTheList() {
+    void showProductsByCategoryPriceDownShouldReturnHighestPrice850ForFirstProductInTheList() {
         //given
         Category category = Category.TECHNIKAPOMIAROWA;
         int firstProductIndex = 0;
@@ -43,4 +43,6 @@ class ProductSearchingServiceTest {
         //then
         Assert.assertEquals(expectedPrice, actualPrice);
     }
+
+
 }
