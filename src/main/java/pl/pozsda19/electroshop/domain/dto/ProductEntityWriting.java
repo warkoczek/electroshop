@@ -13,7 +13,7 @@ public class ProductEntityWriting {
     public String category;
     @NotBlank(message = "Obowiązkowa")
     public String subcategory;
-    @NotNull
+
     public String groupo;
     @NotBlank(message = "Obowiązkowa")
     public String imageURL;

@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
 </head>
 <body>
+
+<!--/*@thymesVar id="message" type="pl.pozsda19.electroshop.controller.mvc.ProductMVCController"*/-->
 <p th:text="${message}" ></p>
 <h1>Powrót do:</h1><br>
-<a th:href="@{/productAdministration/addProduct}">Dodaj Produkt</a>
+<a th:href="@{/showProducts/addProduct}">Dodaj Produkt</a>
 <a th:href="@{/showProducts}">Lista Produktów</a><br>
 
 <h1></h1>
