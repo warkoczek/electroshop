@@ -82,6 +82,7 @@ public class ProductService {
     public String addProducts(List<Product> products) {
         return null;
     }
+
     public Product updateProduct(ProductEntityWriting productEntityWriting){
         Optional<Product> productFromDB = productRepository.findByCode(productEntityWriting.getCode());
         if(productFromDB.isEmpty()) {
