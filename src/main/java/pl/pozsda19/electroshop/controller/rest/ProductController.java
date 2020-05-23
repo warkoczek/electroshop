@@ -53,7 +53,7 @@ public class ProductController {
 
     @PostMapping(value = "/product/add", consumes = "application/json")
     public ResponseEntity<String> createProduct(@RequestBody ProductEntityWriting productEntityWriting){
-        return new ResponseEntity(productService.createProduct(productEntityWriting), HttpStatus.CREATED);
+        return new ResponseEntity(productService.addProduct(productEntityWriting), HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/product/addAll", consumes = "application/json")

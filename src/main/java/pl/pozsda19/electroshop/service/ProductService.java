@@ -29,9 +29,8 @@ public class ProductService {
     }
 
     public Product createProduct(ProductEntityWriting toProductEntity){
-        Product product = productMapper.writeProductEntity(toProductEntity);
-        productRepository.save(product);
-        return product;
+            return productRepository.save(productMapper.writeProductEntity(toProductEntity));
+
     }
     public boolean productExists(String code){
         return productRepository.existsByCode(code);
@@ -69,11 +68,12 @@ public class ProductService {
                 .collect(Collectors.toSet());
     }
 
-   public String addProduct(Product product){
-        productRepository.findByCode(product.getCode())
-                .ifPresent(product1 -> throwDuplicateProductCodeException(product.getCode()));
-        productRepository.save(product);
-        return product.getCode();
+   public String addProduct(ProductEntityWriting productEntityWriting){
+        productRepository.findByCode(productEntityWriting.getCode())
+                .ifPresent(product1 -> throwDuplicateProductCodeException(productEntityWriting.getCode()));
+
+        productRepository.save(productMapper.writeProductEntity(productEntityWriting));
+        return productEntityWriting.getCode();
     }
     private void throwDuplicateProductCodeException(String code){
         throw new DuplicateProductCodeException("Product code "+ code + " in use");

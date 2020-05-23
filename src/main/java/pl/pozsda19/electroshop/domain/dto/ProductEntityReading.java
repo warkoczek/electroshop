@@ -24,4 +24,6 @@ public class ProductEntityReading {
 
     public BigDecimal price;
 
+    public int quantity;
+
 }

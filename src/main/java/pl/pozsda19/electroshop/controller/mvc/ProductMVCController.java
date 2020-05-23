@@ -29,6 +29,11 @@ public class ProductMVCController {
         model.addAttribute("product", new ProductEntityWriting());
         return "addProduct";
     }
+    @GetMapping("/updateProduct")
+    public String showUpdateProductForm(Model model){
+        model.addAttribute("product", new ProductEntityWriting());
+        return "updateProduct";
+    }
 
     @PostMapping("/addProduct")
     public ModelAndView createProduct(
@@ -63,4 +68,13 @@ public class ProductMVCController {
         productModel.ifPresent(showProductModel -> modelAndView.addObject("product", showProductModel));
         return modelAndView;
     }
+
+    @GetMapping(value = "/showProductToUpdate/{code}")
+    public ModelAndView showProductToUpdate(@PathVariable("code") String code){
+        ModelAndView modelAndView = new ModelAndView("updateProduct");
+        Optional<ProductEntityReading> productModel = productService.getProductByCode(code);
+        productModel.ifPresent(showProductModel -> modelAndView.addObject("product", showProductModel));
+        return modelAndView;
+    }
+
 }

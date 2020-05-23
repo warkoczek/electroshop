@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj Produkt</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
+</head>
+<body>
+<h1>Edytuj Produkt</h1><br>
+<!--/*@thymesVar id="product" type="pl.pozsda19.electroshop.domain.dto.ProductEntityWriting"*/-->
+<form action="#" method="post" th:action="@{/showProducts/addProduct}" th:object="${product}">
+    <legend>Nowy Produkt</legend>
+    <fieldset>
+        <label>Kod<input th:type="text" th:field="${product.code}"/></label>
+        <label>Nazwa<input th:type="text" th:field="${product.name}"/></label>
+        <label>Kategoria<input th:type="text" th:field="${product.category}"/></label>
+        <label>Podkategoria<input th:type="text" th:field="${product.subcategory}"/></label>
+        <label>Grupa<input th:type="text" th:field="${product.groupo}"/></label>
+        <label>Opis<input th:type="text" th:field="${product.imageURL}"/></label>
+        <label>Zdjęcie<input th:type="text" th:field="${product.description}"/></label>
+        <label>Cena<input th:type="text" th:field="${product.price}"/></label>
+        <label>Ilość<input th:type="text" th:field="${product.quantity}"/></label>
+        <p>
+            <button type="submit" value="Dodaj">Dodaj</button>
+            <button type="reset" value="Resetuj">Resetuj</button>
+            <a th:href="@{/showProducts}">Powrót do Listy Produktów</a>
+        </p>
+    </fieldset>
+
+
+
+</form>
+
+</body>
+</html>
+

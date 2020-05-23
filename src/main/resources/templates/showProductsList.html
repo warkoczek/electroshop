@@ -3,41 +3,70 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Products List</title>
-    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
+    <title>Show Products</title>
+    <link rel="stylesheet" href="showProductsStyle.css">
 </head>
 <body>
-<style type="text/css">
-    .container {
-        width: 90%;
-        height: auto;
-        background: skyblue;
-        display: flex;
-
-    }
-    .box {
-        width: 20%;
-        height: 100px;
-        border: 1px solid blue;
-        background-color: yellow;
-        margin: 20px;
-        box-sizing: border-box;
-        font-size: 10px;
+<style>
+.product-filter{
+    display: flex;
+}
+.product-filter h1{
+    flex-grow: 1;
+}
+.sort{
+    display: flex;
+}
+.collection-sort{
+    display: flex;
+    flex-direction: column;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+    .product-admin{
+        display:flex;
     }
 </style>
-
-<h1>Products</h1>
-
-<div class="container" th:each="product : ${products}">
-    <div class="box">
-        <a th:href="@{/showProducts/showProduct/{code}(code=${product.code})}">
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.description}"></td>
-            <td th:text="${product.price}"></td>
-            <td th:text="${product.code}"></td>
-        </a>
+<nav class="product-filter">
+    <h1>Products</h1>
+    <div class="sort">
+        <div class="collection-sort">
+            <label>Filter by:</label>
+            <select>
+                <option value="/">By Price</option>
+                <option value="/">By Brand</option>
+            </select>
+        </div>
+        <div class="collection-sort">
+            <label>Sort by:</label>
+            <select>
+                <option value="/">Price:Lowest</option>
+                <option value="/">Price:Highest</option>
+                <option value="/">Name: A to Z</option>
+                <option value="/">Name: Z to A</option>
+            </select>
+        </div>
     </div>
-</div>
+</nav>
+
+<section class="products" th:each="product : ${products}">
+    <a th:href="@{/showProducts/showProduct/{code}(code=${product.code})}">
+    <div class="product-info">
+        <h3 th:text="${product.imageURL}"></h3>
+        <h4 th:text="${product.name}"></h4>
+        <h5 th:text="|${product.price} Zl|"></h5>
+    </div>
+        <div class="product-admin">
+            <a th:href="@{/showProducts/showProductToUpdate/{code}(code=${product.code})}">Edytuj</a>
+        </div>
+    </a>
+
+
+
+</section>
 
 </body>
 </html>
