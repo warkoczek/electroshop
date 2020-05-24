@@ -6,8 +6,10 @@ import pl.pozsda19.electroshop.domain.Group;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
+import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
 import pl.pozsda19.electroshop.domain.dto.ProductMapper;
 import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
+import pl.pozsda19.electroshop.exception.ProductNotFoundException;
 import pl.pozsda19.electroshop.repository.ProductRepository;
 
 import java.util.List;
@@ -26,6 +28,14 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
+    public Product createProduct(ProductEntityWriting toProductEntity){
+            return productRepository.save(productMapper.writeProductEntity(toProductEntity));
+
+    }
+    public boolean productExists(String code){
+        return productRepository.existsByCode(code);
+    }
+
     public Set<ProductEntityReading> showAllProducts(){
         return productRepository.findAll()
                 .stream()
@@ -36,9 +46,11 @@ public class ProductService {
     public Optional<Product> retrieveProductByCode(String code){
         return productRepository.findByCode(code);
     }
-    public Optional<ProductEntityReading> showProductByCode(String code) {
+
+    public Optional<ProductEntityReading> getProductByCode(String code) {
         return productRepository.findByCode(code).map(product -> productMapper.readProductEntity(product));
     }
+
     public Set<ProductEntityReading> retrieveProductsByCategory(Category category){
         return productRepository.findProductsByCategory(category).stream()
                 .map(product -> productMapper.readProductEntity(product))
@@ -56,11 +68,12 @@ public class ProductService {
                 .collect(Collectors.toSet());
     }
 
-    public String addProduct(Product product){
-        productRepository.findByCode(product.getCode())
-                .ifPresent(product1 -> throwDuplicateProductCodeException(product.getCode()));
-        productRepository.save(product);
-        return product.getCode();
+   public String addProduct(ProductEntityWriting productEntityWriting){
+        productRepository.findByCode(productEntityWriting.getCode())
+                .ifPresent(product1 -> throwDuplicateProductCodeException(productEntityWriting.getCode()));
+
+        productRepository.save(productMapper.writeProductEntity(productEntityWriting));
+        return productEntityWriting.getCode();
     }
     private void throwDuplicateProductCodeException(String code){
         throw new DuplicateProductCodeException("Product code "+ code + " in use");
@@ -68,5 +81,28 @@ public class ProductService {
 
     public String addProducts(List<Product> products) {
         return null;
+    }
+
+    public Product updateProduct(ProductEntityWriting productEntityWriting){
+        Optional<Product> productFromDB = productRepository.findByCode(productEntityWriting.getCode());
+        if(productFromDB.isEmpty()) {
+            throw new ProductNotFoundException("Brak produktu o podanym kodzie");
+        }
+
+        productRepository.delete(productFromDB.get());
+        Product productUpdated = productMapper.writeProductEntity(productEntityWriting);
+        productRepository.save(productUpdated);
+        return productUpdated;
+
+    }
+
+    public Product updateProductMVC(ProductEntityWriting productEntityWriting) {
+        Optional<Product> productFromDB = productRepository.findByCode(productEntityWriting.getCode());
+
+            productRepository.delete(productFromDB.get());
+            Product productUpdated = productMapper.writeProductEntity(productEntityWriting);
+            productRepository.save(productUpdated);
+            return productUpdated;
+
     }
 }

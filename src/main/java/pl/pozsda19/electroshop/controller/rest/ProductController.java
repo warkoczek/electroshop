@@ -3,12 +3,16 @@ package pl.pozsda19.electroshop.controller.rest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.pozsda19.electroshop.domain.Category;
 import pl.pozsda19.electroshop.domain.Product;
 import pl.pozsda19.electroshop.domain.Subcategory;
 import pl.pozsda19.electroshop.domain.dto.ProductEntityReading;
+import pl.pozsda19.electroshop.domain.dto.ProductEntityWriting;
+import pl.pozsda19.electroshop.exception.DuplicateProductCodeException;
 import pl.pozsda19.electroshop.service.ProductService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -48,13 +52,19 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product/add", consumes = "application/json")
-    public ResponseEntity<String> addProduct(@RequestBody Product product){
-        return new ResponseEntity(productService.addProduct(product), HttpStatus.CREATED);
+    public ResponseEntity<String> createProduct(@RequestBody ProductEntityWriting productEntityWriting){
+        return new ResponseEntity(productService.addProduct(productEntityWriting), HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/product/addAll", consumes = "application/json")
     public ResponseEntity<String> addProducts(@RequestBody List<Product> products){
         return new ResponseEntity(productService.addProducts(products), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/product/update")
+    public ResponseEntity<Product> updateProduct(@RequestBody ProductEntityWriting productEntityWriting){
+
+        return ResponseEntity.ok(productService.updateProduct(productEntityWriting));
     }
 
 

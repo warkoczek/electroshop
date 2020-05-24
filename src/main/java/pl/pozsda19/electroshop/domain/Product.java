@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(generator = "productSeq")

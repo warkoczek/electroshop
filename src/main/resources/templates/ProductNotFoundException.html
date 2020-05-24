@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Product Created</title>
-    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
+    <title>ProductNotFoundException</title>
 </head>
 <body>
-<p th:text="${message}" ></p>
-
+<h1>Produkt z podanym numerem katalogowym nie istnieje!!!!</h1><br>
 <a th:href="@{/showProducts}">Lista Produktów</a><br>
 <a th:href="@{/showProducts/addProduct}">Dodaj Produkt</a>
-
 </body>
 </html>

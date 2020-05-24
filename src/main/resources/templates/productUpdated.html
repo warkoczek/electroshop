@@ -3,16 +3,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Product Error</title>
+    <title>Product Updated</title>
     <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
 </head>
 <body>
 <p th:text="${message}" ></p>
-<h1>Powrót do:</h1><br>
-<a th:href="@{/productAdministration/addProduct}">Dodaj Produkt</a>
-<a th:href="@{/showProducts}">Lista Produktów</a><br>
 
-<h1></h1>
+<a th:href="@{/showProducts}">Lista Produktów</a><br>
+<a th:href="@{/showProducts/addProduct}">Dodaj Produkt</a>
 
 </body>
 </html>
