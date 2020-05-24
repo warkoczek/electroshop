@@ -61,7 +61,7 @@ public class ProductController {
         return new ResponseEntity(productService.addProducts(products), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/product/update")
     public ResponseEntity<Product> updateProduct(@RequestBody ProductEntityWriting productEntityWriting){
 
         return ResponseEntity.ok(productService.updateProduct(productEntityWriting));

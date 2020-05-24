@@ -95,4 +95,14 @@ public class ProductService {
         return productUpdated;
 
     }
+
+    public Product updateProductMVC(ProductEntityWriting productEntityWriting) {
+        Optional<Product> productFromDB = productRepository.findByCode(productEntityWriting.getCode());
+
+            productRepository.delete(productFromDB.get());
+            Product productUpdated = productMapper.writeProductEntity(productEntityWriting);
+            productRepository.save(productUpdated);
+            return productUpdated;
+
+    }
 }
